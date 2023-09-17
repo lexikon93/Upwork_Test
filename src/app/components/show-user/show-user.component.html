@@ -1,14 +1,14 @@
 <a [routerLink]="['/']">Add users</a>
 <div class="row card-group">
     <div class="col-4" *ngFor="let user of users">
-        <div class="card">
-            <p>{{ user.name }}</p>
-            <p>{{ user.gender }}</p>
+        <div class="card text-center mt-3 mb-3">
+            <h4 class="card-title"><b>Name:</b> {{ user.name }}</h4>
             <img width="250" src="{{ user.profileImage }}">
-            <p>{{ user.location }}</p>
-            <p>{{ user.email }}</p>
-            <p>{{ user.icon }}</p>
-            <p>{{ user.temperature }}</p>
+            <p class="card-text"><b>Gender:</b> {{ user.gender }}</p>
+            <p class="card-text"><b>Location:</b> {{ user.location }}</p>
+            <p class="card-text"><b>Email:</b> {{ user.email }}</p>
+            <p class="card-text">{{ user.icon }}</p>
+            <p class="card-text bottom"><b>Temperature:</b> {{ user.temperature }}</p>
         </div>
     </div>
 </div>

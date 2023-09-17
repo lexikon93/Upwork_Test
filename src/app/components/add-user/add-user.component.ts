@@ -37,8 +37,7 @@ export class AddUserComponent implements OnInit {
           this.apiService.getWeatherData(user.latitude, user.longitude).subscribe(
             (weather: any) => {
               let icon = '';
-
-              switch (weather.current_weather.weatherCode) {
+              switch (weather.current_weather.weathercode.toString()) {
                 case '1':
                 case '2':
                 case '3':
