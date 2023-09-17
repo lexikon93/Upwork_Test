@@ -12,6 +12,8 @@ export class AddUserComponent implements OnInit {
   users: User[] = [];
   weather: Weather[] = [];
 
+  savedUsers: User[] = [];
+
   constructor(
     private apiService: ApiService
   ) {}
@@ -23,7 +25,7 @@ export class AddUserComponent implements OnInit {
           this.users.push({
             name: user.name.first + ' ' + user.name.last,
             gender: user.gender,
-            profileImage: user.picture.thumbnail,
+            profileImage: user.picture.medium,
             location: user.location.country + ', ' + user.location.city + ', ' + user.location.street.name + ', ' + user.location.street.number,
             email: user.email,
             latitude: user.location.coordinates.latitude,
@@ -93,10 +95,15 @@ export class AddUserComponent implements OnInit {
               }
 
               this.weather.push({ icon, temperature: 'Current: ' + weather.current_weather.temperature + ', Lowest: ' + Math.min(...weather.hourly.temperature_2m) + ', Highest: ' + Math.max(...weather.hourly.temperature_2m) });
-            }
+            } 
           );
         });
       }
     );
+  }
+
+  saveUser(user: User): void {
+    this.savedUsers.push(user);
+    localStorage.setItem('users', JSON.stringify(this.savedUsers));
   }
 }

@@ -1,1 +1,11 @@
-<p>show-user works!</p>
+<div class="row card-group">
+    <div class="col-4" *ngFor="let user of users">
+        <div class="card">
+            <p>{{ user.name }}</p>
+            <p>{{ user.gender }}</p>
+            <img width="250" src="{{ user.profileImage }}">
+            <p>{{ user.location }}</p>
+            <p>{{ user.email }}</p>
+        </div>
+    </div>
+</div>
