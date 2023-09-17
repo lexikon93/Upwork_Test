@@ -1,7 +1,8 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AddUserComponent } from './add-user/add-user.component';
-import { ShowUserComponent } from './show-user/show-user.component';
+import { AddUserComponent } from './components/add-user/add-user.component';
+import { ShowUserComponent } from './components/show-user/show-user.component';
 
 const routes: Routes = [
   {
@@ -17,7 +18,10 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [
+    RouterModule.forRoot(routes),
+    HttpClientModule
+  ],
+  exports: [ RouterModule ]
 })
 export class AppRoutingModule {}
