@@ -7,13 +7,13 @@ import { ApiService } from 'src/app/services/api.service';
   styleUrls: ['./add-user.component.scss']
 })
 export class AddUserComponent implements OnInit {
-  users: any[] = [];
 
   constructor(
     private apiService: ApiService
   ) {}
   
   ngOnInit(): void {
-    this.users = this.apiService.getUserData().subscribe((value: any) => console.log('value: ', value));
+    this.apiService.getUserData().subscribe((user: any) => console.log('user: ', user));
+    this.apiService.getWeatherData('-45.7179', '-84.3750').subscribe((weather: any) => console.log('weather: ', weather));
   }
 }
