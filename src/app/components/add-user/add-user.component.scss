@@ -1,7 +1,15 @@
-h4 {
-    margin-top: 15px;
-}
+.card {
+    height: 600px;
 
-img {
-    margin: 10px auto;
+    .beforeButton {
+        flex-grow: 1;
+
+        h4 {
+            margin-top: 15px;
+        }
+        
+        img {
+            margin: 10px auto;
+        }
+    }
 }
