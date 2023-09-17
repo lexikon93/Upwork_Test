@@ -13,7 +13,7 @@ export class AddUserComponent implements OnInit {
   ) {}
   
   ngOnInit(): void {
-    this.apiService.getUserData().subscribe((user: any) => console.log('user: ', user));
+    this.apiService.getUserData(10).subscribe((user: any) => console.log('user: ', user));
     this.apiService.getWeatherData('-45.7179', '-84.3750').subscribe((weather: any) => console.log('weather: ', weather));
   }
 }

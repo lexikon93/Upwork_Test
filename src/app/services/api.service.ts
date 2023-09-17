@@ -10,8 +10,12 @@ export class ApiService {
     private http: HttpClient
   ) {}
 
-  getUserData(): any {
-    return this.http.get('https://randomuser.me/api');
+  getUserData(count?: number): any {
+    if (count) {
+      return this.http.get('https://randomuser.me/api/?results=' + count);
+    } else {
+      return this.http.get('https://randomuser.me/api');
+    }
   }
 
   getWeatherData(latitude: string, longitude: string): any {
