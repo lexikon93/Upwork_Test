@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/interfaces/user';
-import { Weather } from 'src/app/interfaces/weather';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
@@ -10,7 +9,6 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class AddUserComponent implements OnInit {
   users: User[] = [];
-  weather: Weather[] = [];
 
   savedUsers: User[] = [];
 
@@ -29,7 +27,9 @@ export class AddUserComponent implements OnInit {
             location: user.location.country + ', ' + user.location.city + ', ' + user.location.street.name + ', ' + user.location.street.number,
             email: user.email,
             latitude: user.location.coordinates.latitude,
-            longitude: user.location.coordinates.longitude
+            longitude: user.location.coordinates.longitude,
+            icon: '',
+            temperature: '',
           });
         });
 
@@ -94,7 +94,8 @@ export class AddUserComponent implements OnInit {
                   icon = 'Clear sky';
               }
 
-              this.weather.push({ icon, temperature: 'Current: ' + weather.current_weather.temperature + ', Lowest: ' + Math.min(...weather.hourly.temperature_2m) + ', Highest: ' + Math.max(...weather.hourly.temperature_2m) });
+              user.icon = icon;
+              user.temperature = 'Current: ' + weather.current_weather.temperature + ', Lowest: ' + Math.min(...weather.hourly.temperature_2m) + ', Highest: ' + Math.max(...weather.hourly.temperature_2m);
             } 
           );
         });

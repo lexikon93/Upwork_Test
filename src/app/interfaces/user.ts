@@ -6,4 +6,6 @@ export interface User {
     email: string;
     latitude: string;
     longitude: string;
+    icon: string;
+    temperature: string;
 }
