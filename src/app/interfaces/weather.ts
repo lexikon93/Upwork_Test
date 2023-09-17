@@ -1,4 +1,4 @@
 export interface Weather {
     icon: string;
-    temperature: string;
+    temperature: string[];
 }

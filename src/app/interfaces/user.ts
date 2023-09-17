@@ -4,4 +4,6 @@ export interface User {
     profileImage: string;
     location: string;
     email: string;
+    latitude: string;
+    longitude: string;
 }
