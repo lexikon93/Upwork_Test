@@ -1,7 +1,11 @@
 <a [routerLink]="['/show']">Show Users</a>
 <div class="row card-group">
     <div class="col-sm-12 col-md-6 col-lg-4" *ngFor="let user of users">
-        <app-map [userLocation]="[user.latitude, user.longitude]" [userProfileImage]="user.profileImage"></app-map>
+        <app-map 
+            [userLatitude]="user.latitude"
+            [userLongitude]="user.longitude"
+            [userProfileImage]="user.profileImage"
+        ></app-map>
         <div class="card text-center mt-3 mb-3">
             <div class="beforeButton">
                 <h4 class="card-title"><b>Name:</b> {{ user.name }}</h4>

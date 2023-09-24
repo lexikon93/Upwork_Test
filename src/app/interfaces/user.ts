@@ -8,4 +8,5 @@ export interface User {
     longitude: number;
     icon: string;
     temperature: string;
+    hourlyWeatherData: any[];
 }

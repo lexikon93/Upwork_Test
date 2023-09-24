@@ -7,7 +7,8 @@ import { MapOptions, tileLayer, Map, latLng, divIcon, marker } from 'leaflet';
   styleUrls: ['./map.component.scss']
 })
 export class MapComponent implements OnInit, AfterViewInit {
-  @Input() userLocation: [number, number] = [0, 0];
+  @Input() userLatitude: number = 0;
+  @Input() userLongitude: number = 0;
   @Input() userProfileImage: string = '';
 
   mapOptions: MapOptions = {};
@@ -28,7 +29,7 @@ export class MapComponent implements OnInit, AfterViewInit {
     this.mapOptions = {
       layers: [this.layersControl.baseLayers.OpenStreetMap],
       zoom: 12,
-      center: latLng(this.userLocation)
+      center: latLng(this.userLatitude, this.userLongitude)
     };
   }
 
@@ -38,7 +39,7 @@ export class MapComponent implements OnInit, AfterViewInit {
       html: `<img src="${this.userProfileImage}" width="32" height="32">`
     });
 
-    const userMarker = marker(this.userLocation, { icon: customIcon });
+    const userMarker = marker(latLng(this.userLatitude, this.userLongitude), { icon: customIcon });
 
     if (this.map) {
       userMarker.addTo(this.map);

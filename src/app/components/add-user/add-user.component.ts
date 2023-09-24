@@ -46,7 +46,8 @@ export class AddUserComponent implements OnInit, OnDestroy {
             latitude: parseFloat(user.location.coordinates.latitude),
             longitude: parseFloat(user.location.coordinates.longitude),
             icon: '',
-            temperature: ''
+            temperature: '',
+            hourlyWeatherData: []
           });
         });
       })
@@ -55,10 +56,14 @@ export class AddUserComponent implements OnInit, OnDestroy {
 
   updateWeatherData(): void {
     this.users.forEach(user => {
+      user.hourlyWeatherData = [];
+
       this.apiService.getWeatherData(user.latitude, user.longitude).subscribe(
         (weather: any) => {
+          user.hourlyWeatherData.push(weather.hourly);
           user.icon = this.getWeatherIcon(weather.current_weather.weathercode);
           user.temperature = this.getTemperatureString(weather.current_weather.temperature, weather.hourly.temperature_2m);
+          console.log('user.hourlyWeatherData: ', user.hourlyWeatherData);
         }
       );
     });
