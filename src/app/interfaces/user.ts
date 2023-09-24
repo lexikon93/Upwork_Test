@@ -4,8 +4,8 @@ export interface User {
     profileImage: string;
     location: string;
     email: string;
-    latitude: string;
-    longitude: string;
+    latitude: number;
+    longitude: number;
     icon: string;
     temperature: string;
 }

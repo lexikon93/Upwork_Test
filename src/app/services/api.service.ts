@@ -18,7 +18,7 @@ export class ApiService {
     }
   }
 
-  getWeatherData(latitude: string, longitude: string): any {
+  getWeatherData(latitude: number, longitude: number): any {
     return this.http.get('https://api.open-meteo.com/v1/forecast?latitude=' + latitude + '&longitude=' + longitude + '&current_weather=true&hourly=temperature_2m')
   }
 }

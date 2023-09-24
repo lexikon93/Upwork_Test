@@ -43,8 +43,8 @@ export class AddUserComponent implements OnInit, OnDestroy {
               user.location.street.name + ', ' +
               user.location.street.number,
             email: user.email,
-            latitude: user.location.coordinates.latitude,
-            longitude: user.location.coordinates.longitude,
+            latitude: parseFloat(user.location.coordinates.latitude),
+            longitude: parseFloat(user.location.coordinates.longitude),
             icon: '',
             temperature: ''
           });
