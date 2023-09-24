@@ -6,6 +6,7 @@
             [userLongitude]="user.longitude"
             [userProfileImage]="user.profileImage"
         ></app-map>
+        <app-weather-chart *ngIf="user.hourlyWeatherData.length > 0" [hourlyWeatherData]="user.hourlyWeatherData"></app-weather-chart>
         <div class="card text-center mt-3 mb-3">
             <div class="beforeButton">
                 <h4 class="card-title"><b>Name:</b> {{ user.name }}</h4>

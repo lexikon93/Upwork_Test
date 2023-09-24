@@ -56,14 +56,19 @@ export class AddUserComponent implements OnInit, OnDestroy {
 
   updateWeatherData(): void {
     this.users.forEach(user => {
-      user.hourlyWeatherData = [];
-
       this.apiService.getWeatherData(user.latitude, user.longitude).subscribe(
         (weather: any) => {
-          user.hourlyWeatherData.push(weather.hourly);
+          const temperatures = weather.hourly.temperature_2m;
+          const times = weather.hourly.time;
+
+          const hourlyData = temperatures.map((temp: any, index: any) => ({
+            temperature: temp,
+            time: times[index]
+          }));
+
+          user.hourlyWeatherData = hourlyData;
           user.icon = this.getWeatherIcon(weather.current_weather.weathercode);
           user.temperature = this.getTemperatureString(weather.current_weather.temperature, weather.hourly.temperature_2m);
-          console.log('user.hourlyWeatherData: ', user.hourlyWeatherData);
         }
       );
     });
