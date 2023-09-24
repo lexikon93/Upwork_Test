@@ -40,3 +40,10 @@ box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     border-radius: 4px;
     font-size: 12px;
 }
+
+.custom-icon {
+    img {
+        border-radius: 50%;
+        border: 2px solid #fff;
+    }
+}
